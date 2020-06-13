@@ -128,7 +128,7 @@ void userlogin(void)
                     exit ( 1);
             	}
                 fflush(stdin);
-                printf("Choose A Username: ");
+                printf("	Choose A Username: ");
                 	scanf("%[^\n]s",name);
                 	FILE *fptr;
                 	if ((fptr=fopen("user.txt", "r+")) == NULL)
@@ -295,8 +295,8 @@ void function(char arr[],int a,char str[])
     int T= total;
 
     printf("\n\n\n\n\n The total cost is :::::  %d",total);
-    printf("\n\n\n     Do you want a driver(y/n).");
-    c=getchar();
+    printf("\n\n\n     Do you want a driver(y/n)");
+    scanf("%c",&c);
     if(c=='y'||'Y'){
     	
         printf("\n\n\n\nNow the revised cost is :::::  %f",1.20*total);

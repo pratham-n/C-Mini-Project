@@ -295,7 +295,7 @@ void function(char arr[],int a,char str[])
     int T= total;
 
     printf("\n\n\n\n\n The total cost is :::::  %d",total);
-    printf("\n\n\n     Do you want a driver(y/n)");
+    printf("\n\n\n     Do you want a driver?(y/n)");
     fflush(stdin);
     c= getchar();
     if(c=='y'||c=='Y'){
@@ -320,16 +320,23 @@ void bill(char str[],int d,char arr[],int km, int driver){
 	time_t t;
     time(&t);
    	int i,a;
+   	char s1[]="Upto 120 kms", s2[]="Upto 360 kms", s3[]="Upto 600 kms";
+   	
 	system("cls");
   	printf("\n\t\t  		     Car Rental - Customer Invoice                  ");
     printf("\n\t\t	//////////////////////////////////////////////////////\n");
     printf("\t\t	| Customer Name:-----------------|%s\n",str);
     if(driver==1)
-    printf("\t\t    	| Driver-------------------------|%s\n",drivers[a%9]);
+    	printf("\t\t    	| Driver-------------------------|%s\n",drivers[a%9]);
    	printf("\t\t    	| Bill dated---------------------|%s\n" ,ctime(&t));
   	printf("\t\t	| Car Model :--------------------|%s\n",arr);
     printf("\t\t	| Car No. :----------------------|%d\n",i);
-    printf("\t\t	| Kilometers car ran :-----------|%d\n",km);
+    if(km==1)
+    	printf("\t\t	| Kilometers car ran :-----------|%s\n",s1);
+    else if(km==2)
+    	printf("\t\t	| Kilometers car ran :-----------|%s\n",s2);
+    else if(km==3)
+    	printf("\t\t	| Kilometers car ran :-----------|%s\n",s3);
     printf("\t\t	| Your Rental Amount is :--------|%d\n",d);
     printf("\t\t	 ______________________________________________________\n");
     printf("\n");

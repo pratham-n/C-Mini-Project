@@ -296,8 +296,8 @@ void function(char arr[],int a,char str[])
 
     printf("\n\n\n\n\n The total cost is :::::  %d",total);
     printf("\n\n\n     Do you want a driver(y/n)");
-    scanf("%c",&c);
-    if(c=='y'||'Y'){
+    c= getchar();
+    if(c=='y'||c=='Y'){
     	
         printf("\n\n\n\nNow the revised cost is :::::  %f",1.20*total);
         printf("\n\n\nCongratulations You have booked your car");

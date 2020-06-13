@@ -296,6 +296,7 @@ void function(char arr[],int a,char str[])
 
     printf("\n\n\n\n\n The total cost is :::::  %d",total);
     printf("\n\n\n     Do you want a driver(y/n)");
+    fflush(stdin);
     c= getchar();
     if(c=='y'||c=='Y'){
     	
@@ -307,7 +308,7 @@ void function(char arr[],int a,char str[])
     }
     if(c=='n'||c=='N'){
     	
-        printf("You have booked your car");
+        printf("\n\n\nCongratulations You have booked your car");
         getch();
         bill(str,T,arr,k,0);
         exit(1);

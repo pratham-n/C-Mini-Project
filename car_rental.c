@@ -210,7 +210,7 @@ void car(char arr[])
     FILE*fptr;
     fptr=fopen("user1.txt","a+");
     fp=fopen("user.txt","r+");
-    //code from here till line 249 takes care of the user details and attaching the car taken to that specific user
+    //code here till line 256 takes care of the user details and attaching the car taken to that specific user
     while(fread(pUser,sizeof(*pUser),1,fp)==1)
     {
         if(strcmp(pUser->username,arr)==0)

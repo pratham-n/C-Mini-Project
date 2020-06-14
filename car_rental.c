@@ -44,7 +44,7 @@ void hii();
 //function to print introductory message
 void welcome()
 {
-    printf("\n\t\t::::::::::::::::::::::::::::::::::::::::::::::");
+    printf("\n\n\n\t\t::::::::::::::::::::::::::::::::::::::::::::::");
     printf("\n\t\t::          ________________________        ::");
     printf("\n\t\t::         /************************\\       ::");
     printf("\n\t\t::        /**************************\\      ::");
@@ -71,7 +71,7 @@ void userlogin(void)
     //dynamically allocating the memory
     pUser=(struct user *)malloc(sizeof(struct user));
     printf("\n\n\t\t\t\tWELCOME TO APNI CAR RENTAL SERVICE");
-    printf("\n\n\n\n\n\t\t\t1. Login Through An Existing Account");
+    printf("\n\n\n\n\n\t\t\t1. Login Through An Existing Account\n");
     printf("\n\t\t\t2. Create a New account\n");
     printf("\n\n\t\t\tEnter your choice==> ");
     scanf("%d",&i);

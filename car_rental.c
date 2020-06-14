@@ -8,7 +8,7 @@
 struct user{
     char username[10];
     char password[10];
-	char name[40];
+    char name[40];
     char address[40];
     char nationality[8];
     char car_taken[5];
@@ -69,8 +69,8 @@ void userlogin(void)
     char uName[10], pwd[10],name[10];
     int i,a=0,d=0;
     char c,b;
-	pUser=(struct user *)malloc(sizeof(struct user));  //dynamically allocating the memory
-	printf("\n\n                                  WELCOME TO APNI CAR RENTAL SERVICE");
+    pUser=(struct user *)malloc(sizeof(struct user));  //dynamically allocating the memory
+    printf("\n\n                                  WELCOME TO APNI CAR RENTAL SERVICE");
     printf("\n\n\n\n\n\t\t\t1. Login Through An Existing Account\n\t\t\t2. Create a New account\n");
     printf("\n\n\t\t\tEnter your choice==> ");
     scanf("%d",&i);
@@ -191,22 +191,22 @@ void car(char arr[])
     int i,rec=1;
     char cara[3]="yes";
     system("cls");
-	printf("\n\n			WELCOME TO CAR BOOKING");
-	printf("\n\n			HOPE YOU HAVE A NICE JOURNEY\n\n");
+    printf("\n\n			WELCOME TO CAR BOOKING");
+    printf("\n\n			HOPE YOU HAVE A NICE JOURNEY\n\n");
     //display all the cars available
-	for(i=0;i<9;i++)
+    for(i=0;i<9;i++)
     {
-        printf("               %d.         %s         %d\n",i+1,cars[i],price[i]);
+       printf("               %d.         %s         %d\n",i+1,cars[i],price[i]);
     }
     p=getch();
-   	FILE* fp;
-   	FILE*fptr;
-   	fptr=fopen("user1.txt","a+");
-   	fp=fopen("user.txt","r+");
+    FILE* fp;
+    FILE*fptr;
+    fptr=fopen("user1.txt","a+");
+    fp=fopen("user.txt","r+");
     //code from here till line 249 takes care of the user details and attaching the car taken to that specific user
-   	while(fread(pUser,sizeof(*pUser),1,fp)==1)
-   	{
-        if(strcmp(pUser->username,arr)==0)
+    while(fread(pUser,sizeof(*pUser),1,fp)==1)
+    {
+    if(strcmp(pUser->username,arr)==0)
         {
             strcpy(pUser->username,pUser->username);
             fwrite(pUser->username, 10, 1, fptr);

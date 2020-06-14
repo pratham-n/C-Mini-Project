@@ -476,7 +476,7 @@ void return_car(char str[]){
     exit(1);
 }
 
-
+//function which shows the available options
 void portal(char str[10])
 {
     char p,b[5],m;
@@ -519,8 +519,8 @@ void portal(char str[10])
        system("cls");
        printf("\n\n                        Hello %s, Please select one of the services:\n\n\n",str);
        printf("                        1. Car rent\n");
-       printf("                        2. Rating servies \n");
-       printf("                        3. Offers avilable for special customers only\n");
+       printf("                        2. Rating services \n");
+       printf("                        3. Offers available for special customers only\n");
        printf("                        4. My profile\n");
        printf("                        5. Exit\n\n\n\n");
        p=getch();
@@ -539,13 +539,14 @@ void portal(char str[10])
        }
     }
 }
+
+//function for user ratings and reviews
 void rating()
 {
     system("cls");
     printf("\n\n\t\t\tRATINGS AND REVIEWS\n\n");
     char t;
     FILE *fp;
-    //file to store the ratings
     if ( ( fp=fopen("rating.txt", "a+")) == NULL)
     {
         printf ("Could not open file\n");
@@ -568,7 +569,7 @@ void rating()
 
 //function which informs the first four users about the discount
 void package(char arr[]){
-
+    
     int a,k;
     FILE *fp;
     if ( ( fp=fopen("user.txt", "r+")) == NULL)
@@ -576,6 +577,7 @@ void package(char arr[]){
         printf ("Could not open file\n");
         exit (1);
     }
+    //counting the number of users till 4 to print the message
     while ( fread (pUser, sizeof(struct user), 1, fp) == 1)
     {
         a++;
@@ -607,6 +609,7 @@ void package(char arr[]){
     }
 }
 
+//function to print user profile
 void profile(char arr[])
 {
     FILE *fp;
@@ -638,7 +641,7 @@ void profile(char arr[])
     fclose(fp);
 }
 
-
+//function hii from package
 void hii(){
     system("cls");
     printf("\n\n\t\tTHERE IS A RS. 1000 DISCOUNT TO THE FIRST FOUR LUCKY USERS");

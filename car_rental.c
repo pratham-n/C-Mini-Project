@@ -69,7 +69,7 @@ void userlogin(void)
     char uName[10], pwd[10],name[10];
     int i,a=0,d=0;
     char c,b;
-	pUser=(struct user *)malloc(sizeof(struct user));
+	pUser=(struct user *)malloc(sizeof(struct user));  //dynamically allocating the memory
 	printf("\n\n                                  WELCOME TO APNI CAR RENTAL SERVICE");
     printf("\n\n\n\n\n\t\t\t1. Login Through An Existing Account\n\t\t\t2. Create a New account\n");
     printf("\n\n\t\t\tEnter your choice==> ");
@@ -77,7 +77,7 @@ void userlogin(void)
     system("cls");
     switch(i){
 
-		case 1:	printf("\n\n\t\t\tLOGIN TO APNI CAR\n\n");
+		case 1:	printf("\n\n\t\t\tLOGIN TO APNI CAR\n\n");    //login through existing account
              	if ((fp=fopen("user.txt", "r+")) == NULL)
                 {
                 	if ((fp=fopen("user.txt", "w+")) == NULL)
@@ -90,6 +90,7 @@ void userlogin(void)
             	scanf("%9s",uName);
             	printf("	Password: ");
             	scanf("%9s",pwd);
+                //comparing entered name with already existing usernames
             	while (fread(pUser, sizeof(struct user), 1, fp) == 1)
             	{
                   	if( strcmp ( pUser->username, uName) == 0 && strcmp ( pUser->password, pwd) == 0)
@@ -100,7 +101,7 @@ void userlogin(void)
             	}
                 if(a==1)
                 {
-                    printf ("	Congratulations, you are succesfully logged in!!!!!\n");
+                    printf ("	Congratulations, you are succesfully logged in!!!!!\n");  //login success
                     printf("\n	Press any key to continue...");
                     getch();
                     portal(uName);
@@ -108,8 +109,8 @@ void userlogin(void)
                 }
                 else
                 {
-                    printf("                  Incorrect username or password \n\n");
-                    printf("                  Do you want to try again(Y/N)\n\n");
+                    printf("                  Incorrect username or password \n\n");    //login failure
+                    printf("                  Do you want to try again(Y/N)\n\n");  //prompt for retry
                     b=getch();
                     if(b=='y'||b=='Y')
                     {
@@ -123,63 +124,65 @@ void userlogin(void)
                 }
                 fclose(fp);
 
-      	case 2:
-      	    if ((fp=fopen("user.txt", "a+")) == NULL)
+      	case 2: //creating a new account 
+      	        if ((fp=fopen("user.txt", "a+")) == NULL)
                 {
                     printf ("Could not open file\n");
                     exit ( 1);
             	}
+                fflush(stdin);  //clearing the buffer
+                printf("	Choose A Username: "); //input the username
+                scanf("%[^\n]s",name);
+                FILE *fptr;
+                if ((fptr=fopen("user.txt", "r+")) == NULL)
+                {
+                    printf ("Could not open file\n");
+                    exit (1);
+                }
+                while(fread(pUser,sizeof(*pUser),1,fptr)==1)
+                {
+                    if(strcmp(pUser->username,name)==0)
+                    {
+                        d=1;
+                        break;
+                    }
+                }
+                if(d==1)
+                {
+                    //if username already exists then asking for re-entry
+                    printf("		\n\nUsername already taken\n\n\n 		Choose a different one!!!\n\n\n");
+                    printf("press any key to continue...");
+                    getch();
+                    userlogin();
+                }
+                fclose(fptr);
+                strcpy(pUser->username,name);
                 fflush(stdin);
-                printf("	Choose A Username: ");
-                	scanf("%[^\n]s",name);
-                	FILE *fptr;
-                	if ((fptr=fopen("user.txt", "r+")) == NULL)
-                	{
-                        printf ("Could not open file\n");
-                        exit (1);
-                	}
-                	while(fread(pUser,sizeof(*pUser),1,fptr)==1)
-                         {
-                            if(strcmp(pUser->username,name)==0)
-                               {
-                                   d=1;
-                                   break;
-                               }
-                         }
-                         if(d==1)
-                         {
-                               printf("		\n\nUsername already taken\n\n\n 		Choose a different one!!!\n\n\n");
-                               printf("press any key to continue...");
-                               getch();
-                               userlogin();
-                         }
-                         fclose(fptr);
-                    strcpy(pUser->username,name);
-                 	fflush(stdin);
-                	printf("	Choose A Password: ");
-                	scanf("%[^\n]s",pUser->password);
-                	fflush(stdin);
-                	printf("	Name: ");
-                	scanf("%[^\n]s",pUser->name);
-                	fflush(stdin);
-                	printf("	Address: ");
-                	scanf("%[^\n]s",pUser->address);
-                	fflush(stdin);
-                 	printf("	Nationality: ");
-                	scanf("%[^\n]s",pUser->nationality);
-                	fflush(stdin);
-                	strcpy(pUser->car_taken,"no  ");
-                	fflush(stdin);
-                	strcpy(pUser->car_took,"first ride");
-	                fwrite (pUser, sizeof(struct user), 1, fp);
-                	printf("	Account Created Successfully \n\n\n");
-                	printf("	\n\nPress any key...");
-                	getch();
-                    exit(1);
-                  	break;
+                //entering other user details
+                printf("	Choose A Password: ");
+                scanf("%[^\n]s",pUser->password);
+                fflush(stdin);
+                printf("	Name: ");
+                scanf("%[^\n]s",pUser->name);
+                fflush(stdin);
+                printf("	Address: ");
+                scanf("%[^\n]s",pUser->address);
+                fflush(stdin);
+                printf("	Nationality: ");
+                scanf("%[^\n]s",pUser->nationality);
+                fflush(stdin);
+                strcpy(pUser->car_taken,"no  ");
+                fflush(stdin);
+                strcpy(pUser->car_took,"first ride");
+	            fwrite (pUser, sizeof(struct user), 1, fp);    //writing details to the file
+                printf("	Account Created Successfully \n\n\n");
+                printf("	\n\nPress any key...");
+                getch();
+                exit(1);
+                break;
     	}
-    	free ( pUser);//free allocated memory
-    	fclose(fp);
+    free ( pUser);//free allocated memory
+    fclose(fp); //closing the file
 }
 
 //function for car booking
@@ -190,6 +193,7 @@ void car(char arr[])
     system("cls");
 	printf("\n\n			WELCOME TO CAR BOOKING");
 	printf("\n\n			HOPE YOU HAVE A NICE JOURNEY\n\n");
+    //display all the cars available
 	for(i=0;i<9;i++)
     {
         printf("               %d.         %s         %d\n",i+1,cars[i],price[i]);
@@ -199,6 +203,7 @@ void car(char arr[])
    	FILE*fptr;
    	fptr=fopen("user1.txt","a+");
    	fp=fopen("user.txt","r+");
+    //code from here till line 249 takes care of the user details and attaching the car taken to that specific user
    	while(fread(pUser,sizeof(*pUser),1,fp)==1)
    	{
         if(strcmp(pUser->username,arr)==0)
@@ -242,6 +247,7 @@ void car(char arr[])
    	fclose(fp);
    	fclose(fptr);
    	fclose(fopen("user1.txt","w"));
+    //if the user chooses any number more than 9, he will be asked to re-enter
     if(p>'9')
     {
         printf("Choose a valid option");
@@ -256,7 +262,7 @@ void function(char arr[],int a,char str[])
 	int b,k,d;
 	char c;
    	system("cls");
-    printf("You have selected %s as your car which has a price (per Km) of Rs. %d\n\n\n",arr,a);
+    printf("        You have selected the car %s\n        It has a price (per Km) of Rs. %d\n\n\n",arr,a);
     printf("\nEnter the number of days you will be using this for :::::   ");
     scanf("%d",&b);
     label:
@@ -268,35 +274,32 @@ void function(char arr[],int a,char str[])
     scanf("%d",&k);
     static int total;
     int J;
-    switch(k){
-
-		case 1: total= b*a*1*120;
-                //printf("\n\n\n\n\nThe total cost is :::::  %d",b*a*1*120);
-                break;
-
-        case 2: total= b*a*0.8*360;
-                //printf("\n\n\n\n\nThe total cost is :::::  %d",b*a*0.8*360);
+    switch(k)
+    {
+		case 1: total= b*a*1*120;             //Here the total
+                break;                        //cost is being 
+                                              //modified based on
+        case 2: total= b*a*0.8*360;           //the distance the user is travelling
                 break;
 
         case 3: total= b*a*0.67*600;
-                //printf("\n\n\n\n\nThe total cost is :::::  %d",b*a*0.67*600);
                 break;
 
         case 4: printf("\n\n\n\n\nFor journies more than 600kms ,contact us through our customer care number :1800 201 3636\nor mail us at: apni_car.custcare@gmail.com \n");
                 printf("1.  Start another booking!\n 2.  Visit our services Later\n");
                 scanf("%d",&J);
-                switch(J){
+                switch(J)
+                {
+					case 1: userlogin();
+                            break;
 
-						case 1: userlogin();
-                            	break;
-
-                		case 2: printf("\nHope you liked our services. Please Visit Us Again.  :) <3\n") ;
-                	    		exit(1);
-                	          	break;
+                	case 2: printf("\nHope you liked our services. Please Visit Us Again.  :) <3\n") ;
+                	    	exit(1);
+                	        break;
 			  	}
 				break;
 
-        default:printf("\n\n\nChoose appropiate options only. Try again :( ");
+        default:printf("\n\n\nChoose appropiate options only. Try again :( "); //if inappropriate options are used
                 d=1;
                 break;
     }
@@ -304,28 +307,31 @@ void function(char arr[],int a,char str[])
     	goto label;
     int T= total;
 
+    //the code till line 329 takes care of the driver availability
     printf("\n\n\n\n\n The total cost is :::::  %d",total);
     printf("\n\n\n     Do you want a driver?(y/n)");
-    fflush(stdin);
+    fflush(stdin);  //clearing the buffer
     c= getchar();
-    if(c=='y'||c=='Y'){
-
+    if(c=='y'||c=='Y')
+    {
         printf("\n\n\n\nNow the revised cost is :::::  %f",1.20*total);
         printf("\n\n\nCongratulations You have booked your car");
         getch();
-        bill(str,1.2*T,arr,k,1);
+        bill(str,1.2*T,arr,k,1);    //passing to the bill function to print invoice
         exit(1);
     }
-    if(c=='n'||c=='N'){
-
+    if(c=='n'||c=='N')
+    {
         printf("\n\n\nCongratulations You have booked your car");
         getch();
-        bill(str,T,arr,k,0);
+        bill(str,T,arr,k,0);        //passing to bill function to print invoice
         exit(1);
     }
 }
 
-void bill(char str[],int d,char arr[],int km, int driver){
+//the function which prints the invoice
+void bill(char str[],int d,char arr[],int km, int driver)
+{
     system("cls");
     int k,b=0;
    	FILE *fp;
@@ -344,12 +350,12 @@ void bill(char str[],int d,char arr[],int km, int driver){
 	}
 	if(k<4)
         {
-            d=d-50;
-            printf("you are one of our first four lucky customers so here we have a special discount of 50 for you");
+            d=d-100;
+            printf("YOU ARE ONE OF OUR FOUR LUCKY CUSTOMERS. YOU HAVE A DISCOUNT OF RS. 1000 ON YOUR RENTAL AMOUNT :)");
         }
     else
         {
-            printf("dear customer you are not our first four lucky users so your amount in un-disscounted");
+            printf("SORRY THERE IS NO DISCOUNT AVAILABLE NOW :(");
         }
         fclose(fp);
 	time_t t;
@@ -359,11 +365,13 @@ void bill(char str[],int d,char arr[],int km, int driver){
   	printf("\n\t\t  		     Car Rental - Customer Invoice                  ");
     printf("\n\t\t	//////////////////////////////////////////////////////\n");
     printf("\t\t	| Customer Name:-----------------|%s\n",str);
+    //printing driver name based on user choice
     if(driver==1)
     	printf("\t\t    	| Driver-------------------------|%s\n",drivers[a%9]);
+    //printing bill date and time using time function
    	printf("\t\t    	| Bill dated---------------------|%s\n" ,ctime(&t));
   	printf("\t\t	| Car Model :--------------------|%s\n",arr);
-    printf("\t\t	| Car No. :----------------------|%d\n",i);
+    //printing the distance range based on user input
     if(km==1)
     	printf("\t\t	| Kilometers car ran :-----------|%s\n",s1);
     else if(km==2)
@@ -568,7 +576,7 @@ void package(char arr[]){
     {
         printf("                       You are one of our first four user\n\n\n                 And that's why you are given an oppurtunity to \n\n\nExplore the world with 50% discount");
         printf("                       Would you like to continue ....");
-        printf("                       To know the charges and all press any key and to go back press 0");
+        printf("                       To know the packages and all press any key and to go back press 0");
         p=getch();
         if(p=='0')
             portal(arr);
@@ -602,7 +610,7 @@ void profile(char arr[])
 	        fflush(stdin);
             printf("            Address::: %s\n\n\n",pUser->address);
             fflush(stdin);
-           printf("            Car You Took On Previous Drive::: %s\n\n\n",pUser->car_took);
+           	printf("            Car You Took On Previous Drive::: %s\n\n\n",pUser->car_took);
             fflush(stdin);
             break;
         }
@@ -640,6 +648,6 @@ printf("    write anything here regarding world tours");
 int main()
 {
   	start: system("cls");
-    welcome();
-  	userlogin();
+    welcome();  //prints the welcome message
+  	userlogin(); //redirecting user login
 }

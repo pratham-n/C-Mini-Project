@@ -1,0 +1,967 @@
+% ---- Don't modify from Line no. 2 to 74 ----
+\documentclass[12pt]{article}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{epsfig}
+\usepackage{amsmath}   
+\usepackage{amssymb}
+\usepackage{placeins}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage[export]{adjustbox}[2011/08/13]
+\usepackage{tabularx}
+\usepackage{algcompatible}
+\usepackage{caption}
+\usepackage{epsf}
+\usepackage{epstopdf}
+\usepackage{subfigure} 
+\usepackage{colortbl}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{tabularx, booktabs}
+\usepackage{pdfpages}
+
+\usepackage[table,xcdraw]{xcolor}
+
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{placeins}
+\usepackage{makecell}
+\newcounter{qcounter}
+\usepackage{tcolorbox}
+\usepackage{lscape}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{tablefootnote}
+\usepackage{url}
+\usepackage{geometry}
+\usepackage{listings}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[numbers]{natbib}
+\bibliographystyle{unsrtnat}
+
+\begin{document}
+
+% ------------ Don't modify anything up to here ---------------
+
+% From here on-wards modify only the relevant fields, such as Title (line no. 76), "Section:", "Course Instructor:", and "Team Members:" field. (Team Members details should be in the format such as, name, reg. no., mobile no. and email id.). Further, "Title:" can be changed as per your selected topic name. 
+
+% Follow the comments properly
+
+% All \hl{...} line at the end of report delete or comment it.
+
+\begin{center}
+    \textbf{\Large{Final Report \\
+    (\textcolor{blue}{ApniCar}\textcolor{red}{-Car Rental System})}}
+\end{center}
+
+\noindent 
+\textbf{Course Code:} CS110 
+\hspace{2in} 
+\textbf{Course Title:} Computer Programming \\
+\textbf{Semester:} B. Tech 2$^{nd}$ Sem 
+\hspace{1.6in} 
+\textbf{Section:} S3 \\
+\textbf{Academic Year:} 2019-20 
+\hspace{1.8in} 
+\textbf{Course Instructor:} Vaishnavi T \\
+\textbf{Team Members:} \\
+\textbf{1.} Pratham N, 191MT034, 6363583848, prathamn452001@gmail.com 
+\newline
+\textbf{2.} Saransh Bhaduka, 191ME175, 8696966881, saranshbhaduka111@gmail.com
+\newline
+\textbf{3.} Sumanth N Hegde, 191ME284, 7019468097, mnphah@gmail.com
+\newline
+\textbf{4.} Prasanna Sarkar, 191MT033, 9472839780, sarkarprasanna2u@gmail.com
+
+\vspace{0.25in}
+
+\section{Abstract}
+
+
+\textbf{Brief Description:}
+\par With the culture of weekend escapades, road trips, and long weekend plans getting popular in India, the number of people looking for self drive rental cars has increased. And, to cater to this huge number of people seeking rental cars, we at ApniCar offers the best options. We have designed a car rental system which lets the users choose any specific car model to hire or self-drive (fuel included). By using our Car Rental System, our customers would be able to enjoy their Road Trip with our hassle Free booking process, 24x7 Roadside Support, Zero Deposition fee along with Free Insurance coverage. This new system has the capability to show car details, user profiles and receive valuable feedback from the user.With our technology customers do not need to waste hours to book a car via offline/phone call anymore.
+\par In this car rental system,  the user starts off by creating a account and successfully logging in. This enables the user to choose his desired car from a list of car models available. Moreover the registration process is not time-consuming . The user can then specify the number of days he will be using it for, and whether he will be needing a driver or self drive. Based on the given input, the program will then calculate the fee which the user will be urged to pay by visiting a website (for obvious reasons website is non-functional). The rented car will then be added to the user profile, which the user can view anytime he wants to do so. Additional features like giving special discounts for long trips and for first four logged in users, returning the rented car, not allowing the user to book another car without returning the previous one is also present as a part of the system. The user can also give his own feedback as to how the service can be improved and also can give a star based rating on how his or her experience was. This whole project was developed using C programming language and various concepts and features such as file handling concepts(the link to which is added in the references) , pointers , structures etc. were utilized. 
+\par The sole purpose on why this project was developed is to constantly deliver a quality product and friendly service keeping in mind about the cost effectiveness . We are working to increase automation in the system to enhance the user experience with the system.
+
+\noindent
+\textbf{Key Features:}
+\begin{enumerate}
+    \item Login facility (New or existing account)
+    \item Listing car models available
+    \item Renting cars(self- drive option)
+    \item Car model specific rates and discounts for larger distances
+    \item Printing invoice based on duration and driver availability
+    \item User Profile Display
+    \item Returning the cars
+    \item Not allowing the user to book cars until the previous one is returned
+    \item Feedback/rating facility
+\end{enumerate}
+
+\noindent
+\para
+\textbf{References:}
+\begin{enumerate}
+    \item \textcolor{blue}{https://www.geeksforgeeks.org/basics-file-handling-c/}
+    \item \textcolor{blue}{https://overiq.com/c-programming-101/fwrite-function-in-c/}
+    \item \textcolor{blue}{https://www.programiz.com/c-programming/c-structures-pointers}
+    \item \textcolor{blue}{https://www.zoomcar.com/}
+    \item \textcolor{blue}{https://github.com/pratham-n/Cpp-programs/blob/master/student-dbms.cpp}
+    
+    (model project) 
+\end{enumerate}
+
+
+
+\newpage                % Don't delete
+\section{Introduction}  % Don't delete
+\textbf{An overview:}
+\par There are various functions in this program such as one for user login, car booking, returning a car, giving a discount for the first four users, billing and also for rating and user feedback. They will be executed in an orderly manner.
+
+\noindent
+\textbf{The Main function:}
+\par This is the driver function. It directs the user to the welcome screen and then to the user login page.
+
+\noindent
+\textbf{The User Login function:}
+\par Here the structure variable is dynamically allocated memory. The users are prompted to create a new account or login via existing account. While creating a new account, the users will enter a username and password. If the username already exists, he/she will be asked to enter a different one. The users also needs to enter their name, address and nationality. The users have then successfully created an account. They will then login using that account. While logging in, if the username/password entered is incorrect then they will be asked if he wants to retry.
+
+\noindent
+\textbf{The Portal function:}
+\par Once the users are logged in, they will then be directed to the portal. A list of options like car renting, rating services, offers available, My Profile and exit are displayed. The users are free to choose any of the above options.
+
+\noindent
+\textbf{The Car Booking function:}
+\par When the users choose the Car Renting option from the portal, they will be redirected to the Car Booking page. Here the list of car models available for booking will be displayed with their respective prices(per Km). The users will then select the model they want, after which they will select the number of days they will be using the car and range of kilometres they will be travelling. Then based on whether or not they need a driver, a dated invoice will be printed with the updated rental amount. The program then quits. The inputs such as the number of days, driver availability and range of kilometres is managed by the function named "function".
+
+\noindent
+\textbf{The Rating Services function:}
+\par When the user chooses the rating option in the portal, he will be redirected to this function. The user then has to rate the service (by giving a rating out of 5 stars) and then he will be given an option to write a detailed review.
+
+\noindent
+\textbf{The User Profile function:}
+\par The users are redirected here when they enter the User Profile option in the portal. Here the User Details such as username, password, name, address, nationality and also the car taken on the previous drive by the users.
+
+\noindent
+\textbf{The Return Car function:}
+\par This is the function which is activated when the users who have already booked a car, re-login to the program. They will be asked to return the already booked car before doing anything. Without returning the car, they will not be allowed to book another car.
+
+\noindent
+\textbf{The Bill function:}
+\par This function is utilized to print the customer invoice after booking the car. It prints all the details such as the bill date and time, the user details, the car taken and also the total rental amount. Any discounts for the first four users are also displayed in the first part of the bill.
+
+\noindent
+\textbf{The Package function:}
+\par This function informs the user of the discounts available. If the discount has expired, then it says that there are no discounts available. 
+
+\newpage                            % Don't delete
+\section{Flowchart}    % Don't delete
+
+\begin{minipage}{\textwidth}
+  \includepdf[scale=1,pages=1]{S3_T14_Design.pdf}
+\end{minipage}
+\includepdf[pages=2, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=3, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=4, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=5, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=6, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=7, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=8, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=9, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=10, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=11, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=12, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=13, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=14, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=15, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=16, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+\includepdf[pages=17, pagecommand={}, offset=0cm 1cm]{Design.pdf}
+
+
+\newpage                            % Don't delete
+\section{Source Code}               % Don't delete
+
+
+
+This is the main source code
+
+\noindent \textbf{1. main.c}
+
+% between \begin{lstlisting} and \end{lstlisting} include your source code of one .c file. The same you repeat to add other .c file source code
+
+\begin{lstlisting} 
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<string.h>
+#include<time.h>
+
+//structure for user data
+struct user{
+    char username[10];
+    char password[10];
+    char name[40];
+    char address[40];
+    char nationality[8];
+    char car_taken[5];
+    char car_took[20];
+}*pUser;
+
+//array for cars, price and drivers
+char cars[9][20]={"Maruti Brezza  ","Hyundai Creta  ","Alto K10       ","Hyundai i20    ","Ford EcoSport  ","Volkswagon Polo","Tata Indigo    ","Mahindra Xuv500","Tata Hexa      "},p;
+int price[9]={15,17,12,13,16,14,14,19,20};
+char drivers[9][20]={"Ravi","Manoj","Guru","Sanjay","Manju","Sanjay",
+"John","Ahmed","Manees"};
+
+//structure for user ratings
+struct rate_us{
+    char stars[5];
+    char suggestions[40];
+}*sUser;
+
+//function declarations
+void intro();
+void userlogin();
+void welcome();
+void car(char[]);
+void function(char[],int,char[]);
+void tutorials();
+void rating();
+void package(char[]);
+void profile(char[]);
+void portal(char[]);
+void fun(char[] ,int);
+void return_car(char[]);
+void bill(char[],int,char[],int,int);
+void hii();
+
+//function to print introductory message
+void welcome()
+{
+	printf("\n\t\t::::::::::::::::::::::::::::::::::::::::::::::");
+   	printf("\n\t\t::          ________________________        ::");
+   	printf("\n\t\t::         /************************\\       ::");
+   	printf("\n\t\t::        /**************************\\      ::");
+   	printf("\n\t\t::  _____/****************************|***  ::");
+   	printf("\n\t\t:: |********|      WELCOME      |*****|***  ::");
+   	printf("\n\t\t:: |********|         TO        |*****|***  ::");
+   	printf("\n\t\t:: |********|    APNI    CAR    |*****|     ::");
+   	printf("\n\t\t:: \\********************************./      ::");
+   	printf("\n\t\t::    ******                 ******         ::");
+   	printf("\n\t\t::     ****                   ****          ::");
+   	printf("\n\t\t::::::::::::::::::::::::::::::::::::::::::::::\n\n");
+   	printf("\n\n\t\tPress any key to continue...\n");
+   	getch();
+   	system("cls");
+}
+
+//function for user login
+void userlogin(void)
+{
+    FILE *fp;
+    char uName[10], pwd[10],name[10];
+    int i,a=0,d=0;
+    char c,b;
+    //dynamically allocating the memory
+    pUser=(struct user *)malloc(sizeof(struct user));  
+    printf("\n\n\t\t\t\tWELCOME TO APNI CAR RENTAL SERVICE");
+    printf("\n\n\n\n\n\t\t\t1. Login Through An Existing Account");
+    printf("\n\t\t\t2. Create a New account\n");
+    printf("\n\n\t\t\tEnter your choice==> ");
+    scanf("%d",&i);
+    system("cls");
+    switch(i)
+    {
+        //login through existing account
+    case 1: printf("\n\n\t\t\tLOGIN TO APNI CAR\n\n");    
+            if ((fp=fopen("user.txt", "r+")) == NULL)
+            {
+                if ((fp=fopen("user.txt", "w+")) == NULL)
+                {
+            	printf ("Could not open file\n");
+                    exit (1);
+                }
+            }
+            printf("	Username: ");
+            scanf("%9s",uName);
+            printf("	Password: ");
+            scanf("%9s",pwd);
+            //comparing entered name with already existing usernames
+            while (fread(pUser,sizeof(struct user),1,fp) == 1)
+            {
+                if(strcmp(pUser->username,uName)==0&&
+                strcmp(pUser->password,pwd)==0)
+                {
+                    a=1;
+                    break;
+                }
+            }
+            if(a==1)
+            {
+                //login success
+                printf("\tYou are successfully logged in!!!!!\n");
+                printf("\n	Press any key to continue...");
+                getch();
+                portal(uName);
+                exit(1);
+            }
+            else
+            {
+                //login failure
+                printf("\t\tIncorrect username or password \n\n");
+                //prompt for retry
+                printf("\t\tDo you want to try again(Y/N)\n\n");  
+                b=getch();
+                if(b=='y'||b=='Y')
+                {
+                    system("cls");
+                    userlogin();
+                }
+                else
+                {
+                    exit(1);
+                }
+            }
+            fclose(fp);
+
+    case 2: //creating a new account 
+      	    if ((fp=fopen("user.txt", "a+")) == NULL)
+            {
+                printf ("Could not open file\n");
+                exit ( 1);
+            }
+            fflush(stdin);  //clearing the buffer
+            //input the username
+            printf("\n\n	Create A Username (less than 10): ");
+            scanf("%[^\n]s",name);
+            FILE *fptr;
+            if ((fptr=fopen("user.txt", "r+")) == NULL)
+            {
+                printf ("Could not open file\n");
+                exit (1);
+            }
+            while(fread(pUser,sizeof(*pUser),1,fptr)==1)
+            {
+                if(strcmp(pUser->username,name)==0)
+                {
+                    d=1;
+                    break;
+                }
+            }
+            if(d==1)
+            {
+                //if username already exists then asking for re-entry
+                printf("\n\n\t\tUsername already taken\n\n\n); 		
+                printf("Choose a different one!!!\n\n\n");
+                printf("Press any key to continue...");
+                getch();
+                userlogin();
+            }
+            fclose(fptr);
+            strcpy(pUser->username,name);
+            fflush(stdin);
+            //entering other user details
+            printf("	Create A Password (less than 10): ");
+            scanf("%[^\n]s",pUser->password);
+            fflush(stdin);
+            printf("	Name:                             ");
+            scanf("%[^\n]s",pUser->name);
+            fflush(stdin);
+            printf("	Address:                          ");
+            scanf("%[^\n]s",pUser->address);
+            fflush(stdin);
+            printf("	Nationality:                      ");
+            scanf("%[^\n]s",pUser->nationality);
+            fflush(stdin);
+            strcpy(pUser->car_taken,"no  ");
+            fflush(stdin);
+            strcpy(pUser->car_took,"first ride");
+            //writing details to the file
+	    fwrite (pUser, sizeof(struct user), 1, fp);
+	    printf("\n\n\n	Account Created Successfully! \n\n\n");
+            printf("	\n\nPress any key...");
+            getch();
+            exit(1);
+            break;
+    	}
+    free ( pUser);//free allocated memory
+    fclose(fp); //closing the file
+}
+
+//function for car booking
+void car(char arr[])
+{
+    int i,rec=1;
+    char cara[3]="yes";
+    system("cls");
+    printf("\n\n			WELCOME TO CAR BOOKING");
+    printf("\n\n			HOPE YOU HAVE A NICE JOURNEY\n\n");
+    //display all the cars available
+    for(i=0;i<9;i++)
+    {
+        printf("\t\t%d.\t%s\t\t%d\n",i+1,cars[i],price[i]);
+    }
+    printf("\n\n\t\tEnter the car model number of your choice: ");
+    p=getch();
+    FILE* fp;
+    FILE*fptr;
+    fptr=fopen("user1.txt","a+");
+    fp=fopen("user.txt","r+");
+    /*code from here till line 249 takes care of the user details 
+    and attaching the car taken to that specific user*/
+    while(fread(pUser,sizeof(*pUser),1,fp)==1)
+    {
+        if(strcmp(pUser->username,arr)==0)
+        {
+            strcpy(pUser->username,pUser->username);
+            fwrite(pUser->username, 10, 1, fptr);
+            fflush(stdin);
+            strcpy(pUser->password,pUser->password);
+            fwrite(pUser->password, 10, 1, fptr);
+            fflush(stdin);
+            strcpy(pUser->name,pUser->name);
+            fwrite(pUser->name, 40, 1, fptr);
+            fflush(stdin);
+            strcpy(pUser->address,pUser->address);
+            fwrite(pUser->address, 40, 1, fptr);
+            fflush(stdin);
+            strcpy(pUser->nationality,pUser->nationality);
+            fwrite(pUser->nationality ,8, 1, fptr);
+            fflush(stdin);
+            strcpy(pUser->car_taken,"yes ");
+            fwrite(pUser->car_taken,5,1,fptr);
+            fflush(stdin);
+            strcpy(pUser->car_took,cars[p-'1']);
+            fwrite(pUser->car_took,20,1,fptr);
+            fflush(stdin);
+        }
+        else
+        {
+            fwrite(pUser,sizeof(struct user), 1, fptr);
+        }
+    }
+    fclose(fp);
+    fclose(fptr);
+    fclose(fopen("user.txt","w"));
+    fptr=fopen("user1.txt","r");
+    fp=fopen("user.txt","a+");
+    while(fread(pUser,sizeof(*pUser),1,fptr)==1)
+    {
+        fwrite(pUser,sizeof(struct user), 1, fp);
+    }
+    fclose(fp);
+    fclose(fptr);
+    fclose(fopen("user1.txt","w"));
+    /*if the user chooses any number more than 9
+    he will be asked to re-enter*/
+    if(p>'9')
+    {
+        printf("Choose a valid option");
+        car(arr);
+    }
+    function(cars[p-'1'],price[p-'1'],arr);
+}
+
+//function from the car booking function
+void function(char arr[],int a,char str[])
+{
+    int b,k,d;
+    char c;
+    system("cls");
+    printf("\t\tYou have selected the car %s\n", arr);        
+    printf("It has a price (per Km) of Rs. %d\n\n\n",a);
+    printf("\nEnter the number of days you will be using this for :::: ");
+    scanf("%d",&b);
+    label:
+    printf("1. Upto  120 kms\n");
+    printf("2. Upto  360 kms\n");
+    printf("3. Upto  600 kms\n");
+    printf("4. Beyond  600 kms\n");
+    printf("\nSelect the range of Kms you will travel : ");
+    printf("\nEnter your choice : ");
+    scanf("%d",&k);
+    static int total;
+    int J;
+    /*modifying the total cost based on distance*/
+    switch(k)
+    {
+	case 1: total= b*a*1*120;             
+                break;                         
+                                              
+        case 2: total= b*a*0.8*360;           
+                break;
+
+        case 3: total= b*a*0.67*600;
+                break;
+
+        case 4: printf("\n\n\n\n\nFor journeys more than 600 Kms"); 
+                printf(", contact us through our Customer Care number: ");
+                printf("180 3636\n");
+                printf("Or mail us at: apni_car.customercare@gmail.com \n");
+                printf("1.  Start another booking!\n");
+                printf("2.  Visit our services Later\n");
+                scanf("%d",&J);
+                switch(J)
+                {
+		case 1: userlogin();
+                        break;
+
+                case 2: printf("\nHope you liked our services.");
+                        printf(" Please Visit Us Again.  :) <3\n") ;
+                	exit(1);
+                	break;
+	        }
+		break;
+        
+        default:printf("\n\n\nChoose appropriate options only. Try again");
+                d=1;
+                break;
+    }
+    if(d==1)
+    	goto label;
+    int T= total;
+
+    //the code till line 329 takes care of the driver availability
+    printf("\n\n\n\n\n The total cost is :::::  %d",total);
+    printf("\n\n\n     Do you want a driver?(y/n)");
+    fflush(stdin);  //clearing the buffer
+    c= getchar();
+    if(c=='y'||c=='Y')
+    {
+        printf("\n\n\n\nNow the revised cost is :::::  %f",1.20*total);
+        printf("\n\n\nCongratulations You have booked your car");
+        getch();
+        //passing to the bill function to print invoice
+        bill(str,1.2*T,arr,k,1);
+        exit(1);
+    }
+    if(c=='n'||c=='N')
+    {
+        printf("\n\n\nCongratulations You have booked your car");
+        getch();
+        //passing to bill function to print invoice
+        bill(str,T,arr,k,0);
+        exit(1);
+    }
+}
+
+//the function which prints the invoice
+void bill(char str[],int d,char arr[],int km, int driver)
+{
+    system("cls");
+    int k,b=0;
+    FILE *fp;
+    if((fp=fopen("user.txt", "r+")) == NULL)
+    {
+        printf ("Could not open file\n");
+        exit (1);
+    }
+    while ( fread (pUser, sizeof(struct user), 1, fp) == 1)
+    {
+        b++;
+        if( strcmp (pUser->username, str) ==0)
+        {
+            k=b;
+        }
+    }
+    if(k<4)
+    {
+        d=d-100;
+        printf("YOU ARE ONE OF OUR FOUR LUCKY CUSTOMERS.");
+        printf(" YOU HAVE A DISCOUNT OF RS. 1000 :)");
+    }
+    else
+    {
+        printf("SORRY THERE IS NO DISCOUNT AVAILABLE NOW :(");
+    }
+    fclose(fp);
+    time_t t;
+    time(&t);
+    int i,a;
+    char s1[]="Upto 120 kms", s2[]="Upto 360 kms", s3[]="Upto 600 kms";
+    printf("\n\t\t\t\t\t   Car Rental - Customer Invoice\t\t\t\t  ");
+    printf("\n");
+    printf("\t\t  //////////////////////////////////////////////////////");
+    printf("\n");
+    printf("\t\t    | Customer Name:-----------------|%s\n",str);
+    //printing driver name based on user choice
+    if(driver==1)
+    printf("\t\t\t\t| Driver-------------------------|%s\n",drivers[a%9]);
+    //printing bill date and time using time function
+    printf("\t\t\t\t| Bill dated---------------------|%s\n" ,ctime(&t));
+    printf("\t\t    | Car Model :--------------------|%s\n",arr);
+    //printing the distance range based on user input
+    if(km==1)
+        printf("\t\t    | Kilometers car ran :-----------|%s\n",s1);
+    else if(km==2)
+        printf("\t\t    | Kilometers car ran :-----------|%s\n",s2);
+    else if(km==3)
+        printf("\t\t    | Kilometers car ran :-----------|%s\n",s3);
+    printf("\t\t    | Your Rental Amount is :--------|%d\n",d);
+    printf("\t\t\t ______________________________________________");
+    printf("________\n");
+    printf("\n");
+    printf("\t\t    | Total Rental Amount is :-------|%d\n",d);
+    printf("\t\t\t ______________________________________________");
+    printf("________\n");
+    printf("\t\t\t # This is a computer generated invoice and it does\n");
+    printf("\t\t     not require an authorised signature #\n");
+    printf("\n");
+    printf("\t\t\t/////////////////////////////////////////////////////");
+    printf("\n");
+    printf("\t\t\tYou are advised to pay up the amount before due date.");
+    printf("\n");
+    printf("\t\t    Otherwise penalty fee will be applied\n");
+    printf("\t\t\t/////////////////////////////////////////////////////");
+    printf("\n");
+}
+
+//the function which manages the car returning
+void return_car(char str[]){
+
+    int i,km,a;
+    char arr[10];
+    system("cls");
+    time_t t;
+    time(&t);
+    system("cls");
+    FILE* fp;
+    FILE* fptr2;
+    fptr2=fopen("user2.txt","a+");
+    fp=fopen("user.txt","r+");
+    /*modifies the file so that the
+    car taken can be recorded
+    and the user can gain re-entry to the program*/
+    while(fread(pUser,sizeof(*pUser),1,fp)==1)
+    {
+        if(strcmp(pUser->username,str)==0)
+        {
+            strcpy(pUser->username,pUser->username);
+            fwrite(pUser->username, 10, 1, fptr2);
+            fflush(stdin);
+            strcpy(pUser->password,pUser->password);
+            fwrite(pUser->password, 10, 1, fptr2);
+            fflush(stdin);
+            strcpy(pUser->name,pUser->name);
+            fwrite(pUser->name, 40, 1, fptr2);
+            fflush(stdin);
+            strcpy(pUser->address,pUser->address);
+            fwrite(pUser->address, 40, 1, fptr2);
+            fflush(stdin);
+            strcpy(pUser->nationality,pUser->nationality);
+            fwrite(pUser->nationality ,8, 1, fptr2);
+            fflush(stdin);
+            strcpy(pUser->car_taken,"no  ");
+            fwrite(pUser->car_taken,5,1,fptr2);
+            fflush(stdin);
+            strcpy(pUser->car_took,pUser->car_took);
+            fwrite(pUser->car_took ,20, 1, fptr2);
+            fflush(stdin);
+        }
+        else
+        {
+            fwrite(pUser,sizeof(struct user), 1, fptr2);
+        }
+    }
+    fclose(fp);
+    fclose(fptr2);
+    fclose(fopen("user.txt","w"));
+    fptr2=fopen("user2.txt","r");
+    fp=fopen("user.txt","a+");
+    while(fread(pUser,sizeof(*pUser),1,fptr2)==1)
+    {
+        fwrite(pUser,sizeof(struct user), 1, fp);
+    }
+    fclose(fp);
+    fclose(fptr2);
+    printf("\n\n");
+    printf("        You have successfully returned the car!\n\n");
+    printf("        Hope you liked our services!\n\n");
+    printf("        Visit again\n\n");
+    system("cls");
+    userlogin();
+    exit(1);
+}
+
+//function for the main portal
+void portal(char str[10])
+{
+    char p,b[5],m;
+    int a=0;
+    FILE *fp;
+    if ((fp=fopen("user.txt", "r+")) == NULL)
+    {
+        printf ("Could not open file\n");
+        exit (1);
+    }
+    //reading the file to check if car is already taken
+    while (fread(pUser, sizeof(struct user), 1, fp) == 1)
+    {
+        if( strcmp ( pUser->username, str) ==0)
+        {
+            strcpy(b,pUser->car_taken);
+            a=1;
+            break;
+        }
+    }
+    fclose(fp);
+    if(strcmp(b,"yes ")==0)
+    {
+        system("cls");
+        printf("\n\n");
+        printf("\t\t\tSorry there are no options available right now");
+        printf("\n\n");
+        printf("\t\t\tYou are yet to return a car\n\n");
+        printf("\t\t\tDo you want to return it now(y/n)?: ");
+        m=getch();
+        if(m=='y')
+            return_car(str);
+        else{
+            printf("\n      Program is closing.....");
+            exit(1);
+        }
+    }
+    else
+    {
+       system("cls");
+       printf("\n\n\t\t\t\t\t   Hello %s,",str);
+       printf(" Please select one of the services:\n\n\n");
+       printf("\t\t\t\t\t\t1. Car rent\n");
+       printf("\t\t\t\t\t\t2. Rating servies \n");
+       printf("\t\t\t\t\t\t3. Offers avilable for special customers only");
+       printf("\n");
+       printf("\t\t\t\t\t\t4. My profile\n");
+       printf("\t\t\t\t\t\t5. Exit\n\n\n\n");
+       p=getch();
+       //various options available
+       switch(p)
+       {
+            case '1':   car(str);
+                        break;
+            case '2':   rating();
+                        break;
+            case '3':   package(str);
+                        break;
+            case '4':   profile(str);
+                        break;
+            case '5':   exit(1);
+                        break;
+       }
+    }
+}
+
+//function for rating services
+void rating()
+{
+    system("cls");
+    char t;
+    FILE *fp;
+    if ((fp=fopen("rating.txt", "a+")) == NULL)
+    {
+        printf ("Could not open file\n");
+        exit (1);
+    }
+    sUser=(struct rate_us *)malloc(sizeof(struct rate_us));
+    printf("\t\t\t\t\t\t\t\t\t  Enter the stars you want to give ");
+    scanf("\t\t                               %s",sUser->stars);
+    fflush(stdin);
+    printf("\t\t\t\t\t\t\t\t\t  Would you like to suggest something(y/n)");
+    scanf("%c",&t);
+    if(t=='y')
+    scanf("\t\t\t\t\t\t                %s",sUser->suggestions);
+    else
+    exit(1);
+}
+
+//function which informs the first four users about the discount
+void package(char arr[]){
+
+    int a,k;
+    FILE *fp;
+    if ( ( fp=fopen("user.txt", "r+")) == NULL)
+    {
+        printf ("Could not open file\n");
+        exit (1);
+    }
+    while ( fread (pUser, sizeof(struct user), 1, fp) == 1)
+    {
+        a++;
+        if( strcmp ( pUser->username, arr) ==0)
+        {
+            k=a;
+        }
+    }
+    fclose(fp);
+    system("cls");
+    printf("\t\t\tDISCOUNT PACKAGE\n\n");
+    if(k<4)
+    {
+        printf("\t\tYou are one of our first four user\n\n\n");
+        printf("\t\tAnd that's why you are given an oppurtunity\n\n\n");
+        printf("\t\tExplore the world with Rs. 1000 discount\n\n\n");
+        printf("\t\tWould you like to continue ....\n\n");
+        printf("\t\tTo know the packages and all press any key and to go back press 0");
+        p=getch();
+        if(p=='0')
+            portal(arr);
+        else
+            hii();
+    }
+
+    if(k>=4)
+    {
+        printf("Sorry you are not one of our lucky users!");
+    }
+}
+
+//function for user profile
+void profile(char arr[])
+{
+    FILE *fp;
+    if ((fp=fopen("user.txt", "r+")) == NULL)
+    {
+        printf ("Could not open file\n");
+        exit (1);
+    }
+    //reading the file
+    while ( fread (pUser, sizeof(struct user), 1, fp) == 1){
+        
+    if( strcmp (pUser->username, arr) ==0){
+            
+    system("cls");
+    printf("\t\t\tName                   :::%s\n\n\n",pUser->username);
+    fflush(stdin);
+    printf("\t\t\tPassword               :::%s\n\n\n",pUser->password);
+    fflush(stdin);
+    printf("\t\t\tNationality            ::: %s\n\n\n",pUser->nationality);
+    fflush(stdin);
+    printf("\t\t\tAddress                ::: %s\n\n\n",pUser->address);
+    fflush(stdin);
+    printf("\t\t\tCar You Took Previously::: %s\n\n\n",pUser->car_took);
+    fflush(stdin);
+    break;
+    }
+    }
+    fclose(fp);
+}
+
+//function to inform the first four users about the discount
+void hii(){
+    system("cls");
+    printf("\n\n\t\tTHERE IS A RS. 1000 DISCOUNT"); 
+    printf(" TO THE FIRST FOUR LUCKY USERS");
+}
+
+//driver function
+int main()
+{
+    start: system("cls");
+    welcome();  //prints the welcome message
+    userlogin(); //redirecting user login
+}
+\end{lstlisting}
+
+\newpage
+\section{References:}
+\begin{enumerate}
+    \item \textcolor{blue}{https://www.geeksforgeeks.org/basics-file-handling-c/}
+    \item \textcolor{blue}{https://overiq.com/c-programming-101/fwrite-function-in-c/}
+    \item \textcolor{blue}{https://www.programiz.com/c-programming/c-structures-pointers}
+    \item \textcolor{blue}{https://www.zoomcar.com/}
+    \item \textcolor{blue}{https://github.com/pratham-n/Cpp-programs/blob/master/student-dbms.cpp}
+    
+    (model project) 
+\end{enumerate}
+
+\newpage            % Don't delete
+\section{Results}   % Don't delete
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture1.png} % Here output.png is the file name of your snapshot. So, change only output.png with your file name and \caption{} to give some name. Don't touch other lines between \begin{figure} and \end{figure}
+    \caption{Welcome Screen}
+    
+    \includegraphics[width = \columnwidth]{Capture2.png}
+    \caption{Login Screen}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture3.png} 
+    \caption{Creating a new account}
+    
+    \includegraphics[width = \columnwidth]{Capture4.png} 
+    \caption{Login via existing account}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture5.png} 
+    \caption{The Main Portal}
+    \includegraphics[width = \columnwidth]{Capture6.png} 
+    \caption{Car Booking Intro}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture7.png} 
+    \caption{The Car Booking Details Page}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture8.png} 
+    \caption{The Invoice}
+    \includegraphics[width = \columnwidth]{Capture9.png} 
+    \caption{The Profile}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture10.png} 
+    \caption{The Discount Package Page}
+    \includegraphics[width = \columnwidth]{Capture11.png} 
+    \caption{Informing the user of the discount}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{Capture12.png} 
+    \caption{Ratings page}
+\end{figure}
+
+
+\end{document}

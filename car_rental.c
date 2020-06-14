@@ -11,7 +11,8 @@ struct user{
 	char name[40];
     char address[40];
     char nationality[8];
-    char car_taken[3];                      
+    char car_taken[5];
+    char car_took[20];
 }*pUser;
 
 //array for cars, price and drivers
@@ -75,7 +76,7 @@ void userlogin(void)
     scanf("%d",&i);
     system("cls");
     switch(i){
-        
+
 		case 1:	printf("\n\n\t\t\tLOGIN TO APNI CAR\n\n");
              	if ((fp=fopen("user.txt", "r+")) == NULL)
                 {
@@ -121,8 +122,9 @@ void userlogin(void)
                     }
                 }
                 fclose(fp);
-                
-      	case 2: if ((fp=fopen("user.txt", "a+")) == NULL)
+
+      	case 2:
+      	    if ((fp=fopen("user.txt", "a+")) == NULL)
                 {
                     printf ("Could not open file\n");
                     exit ( 1);
@@ -146,7 +148,9 @@ void userlogin(void)
                          }
                          if(d==1)
                          {
-                               printf("		Username already taken\n\n\n Choose a different one!!!\n\n\n");
+                               printf("		\n\nUsername already taken\n\n\n 		Choose a different one!!!\n\n\n");
+                               printf("press any key to continue...");
+                               getch();
                                userlogin();
                          }
                          fclose(fptr);
@@ -164,7 +168,9 @@ void userlogin(void)
                  	printf("	Nationality: ");
                 	scanf("%[^\n]s",pUser->nationality);
                 	fflush(stdin);
-                	strcpy(pUser->car_taken,"no");
+                	strcpy(pUser->car_taken,"no  ");
+                	fflush(stdin);
+                	strcpy(pUser->car_took,"first ride");
 	                fwrite (pUser, sizeof(struct user), 1, fp);
                 	printf("	Account Created Successfully \n\n\n");
                 	printf("	\n\nPress any key...");
@@ -212,8 +218,12 @@ void car(char arr[])
             strcpy(pUser->nationality,pUser->nationality);
             fwrite(pUser->nationality ,8, 1, fptr);
             fflush(stdin);
-            strcpy(pUser->car_taken,"yes");
-            fwrite(pUser->car_taken,3,1,fptr);
+            strcpy(pUser->car_taken,"yes ");
+            fwrite(pUser->car_taken,5,1,fptr);
+            fflush(stdin);
+            strcpy(pUser->car_took,cars[p-'1']);
+            fwrite(pUser->car_took,20,1,fptr);
+            fflush(stdin);
         }
         else
         {
@@ -259,7 +269,7 @@ void function(char arr[],int a,char str[])
     static int total;
     int J;
     switch(k){
-        
+
 		case 1: total= b*a*1*120;
                 //printf("\n\n\n\n\nThe total cost is :::::  %d",b*a*1*120);
                 break;
@@ -276,7 +286,7 @@ void function(char arr[],int a,char str[])
                 printf("1.  Start another booking!\n 2.  Visit our services Later\n");
                 scanf("%d",&J);
                 switch(J){
-                
+
 						case 1: userlogin();
                             	break;
 
@@ -299,7 +309,7 @@ void function(char arr[],int a,char str[])
     fflush(stdin);
     c= getchar();
     if(c=='y'||c=='Y'){
-    	
+
         printf("\n\n\n\nNow the revised cost is :::::  %f",1.20*total);
         printf("\n\n\nCongratulations You have booked your car");
         getch();
@@ -307,7 +317,7 @@ void function(char arr[],int a,char str[])
         exit(1);
     }
     if(c=='n'||c=='N'){
-    	
+
         printf("\n\n\nCongratulations You have booked your car");
         getch();
         bill(str,T,arr,k,0);
@@ -316,13 +326,36 @@ void function(char arr[],int a,char str[])
 }
 
 void bill(char str[],int d,char arr[],int km, int driver){
-   	
+    system("cls");
+    int k,b=0;
+   	FILE *fp;
+    if ( ( fp=fopen("user.txt", "r+")) == NULL)
+	{
+    	printf ("Could not open file\n");
+        exit (1);
+    }
+    while ( fread (pUser, sizeof(struct user), 1, fp) == 1)
+	{
+	    b++;
+        if( strcmp ( pUser->username, str) ==0)
+        {
+    		k=b;
+        }
+	}
+	if(k<4)
+        {
+            d=d-50;
+            printf("you are one of our first four lucky customers so here we have a special discount of 50 for you");
+        }
+    else
+        {
+            printf("dear customer you are not our first four lucky users so your amount in un-disscounted");
+        }
+        fclose(fp);
 	time_t t;
     time(&t);
    	int i,a;
    	char s1[]="Upto 120 kms", s2[]="Upto 360 kms", s3[]="Upto 600 kms";
-   	
-	system("cls");
   	printf("\n\t\t  		     Car Rental - Customer Invoice                  ");
     printf("\n\t\t	//////////////////////////////////////////////////////\n");
     printf("\t\t	| Customer Name:-----------------|%s\n",str);
@@ -352,7 +385,7 @@ void bill(char str[],int d,char arr[],int km, int driver){
 }
 
 void return_car(char str[]){
-    
+
 	int i,km,a;
     char arr[10];
     system("cls");
@@ -396,8 +429,12 @@ void return_car(char str[]){
             strcpy(pUser->nationality,pUser->nationality);
             fwrite(pUser->nationality ,8, 1, fptr2);
             fflush(stdin);
-            strcpy(pUser->car_taken,"no");
-            fwrite(pUser->car_taken,3,1,fptr2);
+            strcpy(pUser->car_taken,"no  ");
+            fwrite(pUser->car_taken,5,1,fptr2);
+            fflush(stdin);
+            strcpy(pUser->car_took,pUser->car_took);
+            fwrite(pUser->car_took ,20, 1, fptr2);
+            fflush(stdin);
         }
         else
         {
@@ -426,7 +463,7 @@ void return_car(char str[]){
 
 void portal(char str[10])
 {
-    char p,b[3],m;
+    char p,b[5],m;
     int a=0;
     FILE *fp;
     if ((fp=fopen("user.txt", "r+")) == NULL)
@@ -444,7 +481,7 @@ void portal(char str[10])
         }
     }
 	fclose(fp);
-    if(strcmp(b,"yes")==0)
+    if(strcmp(b,"yes ")==0)
     {
         system("cls");
         printf("\n\n");
@@ -455,7 +492,7 @@ void portal(char str[10])
         if(m=='y')
         	return_car(str);
         else{
-        	
+
 			printf("\n		Program is closing.....");
 			exit(1);
 		}
@@ -509,7 +546,7 @@ void rating()
 }
 
 void package(char arr[]){
-    
+
 	int a,k;
 	FILE *fp;
     if ( ( fp=fopen("user.txt", "r+")) == NULL)
@@ -565,6 +602,8 @@ void profile(char arr[])
 	        fflush(stdin);
             printf("            Address::: %s\n\n\n",pUser->address);
             fflush(stdin);
+           printf("            Car You Took On Previous Drive::: %s\n\n\n",pUser->car_took);
+            fflush(stdin);
             break;
         }
 	}
@@ -573,7 +612,7 @@ void profile(char arr[])
 
 void fun(char str[],int d){
    	int i;
-    for(i-0;i<9;i++)
+    for(i=0;i<9;i++)
     {
         if(strcmp(cars[i],str)==0)
             break;

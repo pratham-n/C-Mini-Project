@@ -260,6 +260,7 @@ void car(char arr[])
         printf("Choose a valid option");
         car(arr);
     }
+    //the selected car and its price is sent into function
     function(cars[p-'1'],price[p-'1'],arr);
 }
 
@@ -318,7 +319,7 @@ void function(char arr[],int a,char str[])
         goto label;
     int T= total;
 
-    //the code till line 329 takes care of the driver availability
+    //the code till line 343 takes care of the driver availability
     printf("\n\n\t\tThe total cost is :::::  %d",total);
     printf("\n\n\t\tDo you want a driver?(y/n)");
     fflush(stdin);  //clearing the buffer
@@ -471,7 +472,7 @@ void return_car(char str[]){
     printf("        Hope you liked our services!\n\n");
     printf("        Visit again\n\n");
     system("cls");
-    userlogin();
+    userlogin(); //redirect to user login
     exit(1);
 }
 
@@ -500,7 +501,7 @@ void portal(char str[10])
     {
         system("cls");
         printf("\n\n");
-        printf("            Sorry there are no options avilable for you right now\n\n");
+        printf("            Sorry there are no options available for you right now\n\n");
         printf("            You are yet to return a car\n\n");
         printf("            Do you want to return it now(y/n)?: ");
         m=getch();

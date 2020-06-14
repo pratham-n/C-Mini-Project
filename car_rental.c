@@ -255,7 +255,7 @@ void car(char arr[])
     fclose(fptr);
     fclose(fopen("user1.txt","w"));
     //if the user chooses any number more than 9, he will be asked to re-enter
-    if(p>'9')
+    if(p>'9'&&p==10)
     {
         printf("Choose a valid option");
         car(arr);
@@ -470,6 +470,8 @@ void return_car(char str[]){
     printf("        You have successfully returned the car!\n\n");
     printf("        Hope you liked our services!\n\n");
     printf("        Visit again\n\n");
+    system("cls");
+    userlogin();
     exit(1);
 }
 
